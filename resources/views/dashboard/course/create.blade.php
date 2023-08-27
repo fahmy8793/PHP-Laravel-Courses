@@ -29,6 +29,15 @@
                 <input type="date" name="ended_at" class="form-control" >
             </div>
             <div class="form-group">
+                <label for="youtubelink">youtubelink</label>
+                <input type="video/mp4" name="youtubelink" class="form-control" >
+{{--                <video controls>--}}
+{{--                    <source src="{{ route('courses.show', ['youtubelink' => 'your_video.mp4']) }}" type="video/mp4">--}}
+{{--                    Your browser does not support the video tag.--}}
+{{--                </video>--}}
+
+            </div>
+            <div class="form-group">
                 <div class="form-group">
                     <label for="status">status</label>
                     <select name="status" class="form-control"  >

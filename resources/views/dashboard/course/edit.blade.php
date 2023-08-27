@@ -26,6 +26,10 @@
                 <input type="date" name="started_at" class="form-control"value="{{ $course->started_at }}" required>
             </div>
             <div class="form-group">
+                <label for="youtubelink">youtubelink</label>
+                <input type="text" name="youtubelink" class="form-control" value="{{ $course->youtubelink }}" required>
+            </div>
+            <div class="form-group">
                 <label for="ended_at">ended_at</label>
                 <input type="date" name="ended_at" class="form-control" value="{{ $course->ended_at }}" required>
             </div>

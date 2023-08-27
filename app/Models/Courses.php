@@ -18,12 +18,13 @@ class Courses extends Model
         ,'photo'
         ,'status'
         ,'started_at'
+        ,'youtubelink'
     ];
     use HasFactory;
 
 
-    public function category()
+    public function namecategory()
     {
-       return $this->belongsTo(Category::class);
+       return $this->belongsTo(Category::class,'category','id');
     }
 }

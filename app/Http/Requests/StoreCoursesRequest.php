@@ -25,11 +25,12 @@ class StoreCoursesRequest extends FormRequest
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric|min:0',
-            'category' => 'required|exists:category,name',
+            'category' => 'required|exists:category,id',
             'status' => 'required',
             'started_at' => 'required',
             'ended_at' => 'required',
             'photo' => 'nullable',
+            'youtubelink'=> 'nullable'
         ];
     }
 }

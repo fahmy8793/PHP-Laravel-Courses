@@ -19,10 +19,10 @@
                 <th>Price</th>
                 <th>Started_at</th>
                 <th>ended_at</th>
+                <th>youtubelink</th>
                 <th>Categories_ID</th>
                 <th>Photo
                 <th>Status</th>
-
                 <th>Actions</th>
             </tr>
             </thead>
@@ -34,6 +34,7 @@
                     <td>{{ $course->price }}</td>
                     <td>{{ $course->started_at }}</td>
                     <td>{{ $course->ended_at }}</td>
+                    <td>{{ $course->youtubelink }}</td>
                     <td>{{ $course->category }}</td>
                     <td>
                         @if($course->photo)
@@ -46,6 +47,9 @@
                     </td>
                     <td>{{ $course->status ? 'Active' : 'Inactive' }}</td>
                     <td>
+                        <div>
+
+                        </div>
                         {{--                    <a href="{{ route('products.show', $product->id) }}" class="btn btn-info btn-sm">View</a>--}}
                         <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-primary btn-sm">Edit</a>
                         <form action="{{ route('courses.destroy', $course->id) }}" method="POST" class="d-inline">
@@ -58,7 +62,12 @@
             @endforeach
             </tbody>
         </table>
-{{--        {{ $products->links() }} <!-- Add this line to display pagination links -->--}}
+                                    <video width="640" height="360" controls>
+                                        <source src="{{ asset('videos/sample.mp4') }}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+
+        {{--        {{ $products->links() }} <!-- Add this line to display pagination links -->--}}
     </div>
     </div>
     </body>

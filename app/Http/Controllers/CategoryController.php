@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Post as PostResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
+//use App\Http\Resources\Post as PostResource;
+
 
 class CategoryController extends Controller
 {
@@ -12,13 +15,25 @@ class CategoryController extends Controller
         // $categories = Category::all();
         $categories = Category::all();
         return view('dashboard.category.index', compact('categories'));
+      //  return PostResource::collection($categories);
+
     }
 
     public function create()
     {
+
         return view('dashboard.category.create');
     }
+    public function get()
+{
+    $categories = Category::all();
+    $categories = Category::where('status', 1)->get();
 
+
+    return PostResource::collection($categories);
+
+    //return Category::all();
+}
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -32,7 +47,6 @@ class CategoryController extends Controller
             $data['photo'] = $path;
         }
         //dd($request->all());
-
 
         Category::create($data);
 

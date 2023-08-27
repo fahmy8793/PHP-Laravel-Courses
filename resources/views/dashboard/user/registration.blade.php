@@ -1,9 +1,10 @@
 @extends('dashboard.master')
 @section('content')
+
     <!DOCTYPE html>
 <html>
 <head>
-    <title>Login Form </title>
+    <title>Registration Form </title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,11 +26,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-9 col-lg-8 mx-auto">
-                            <h3 class="login-heading mb-4">Welcome back!</h3>
-                            <form action="{{ route('post-login')}}" method="POST" id="logForm">
-
+                            <h3 class="login-heading mb-4">Register here!</h3>
+                            <form action="{{url('post-registration')}}" method="POST" id="regForm">
                                 {{ csrf_field() }}
+                                <div class="form-label-group">
+                                    <input type="text" id="inputName" name="name" class="form-control" placeholder="Full name" autofocus>
+                                    <label for="inputName">Name</label>
 
+                                    @if ($errors->has('name'))
+                                        <span class="error">{{ $errors->first('name') }}</span>
+                                    @endif
+
+                                </div>
                                 <div class="form-label-group">
                                     <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" >
                                     <label for="inputEmail">Email address</label>
@@ -48,15 +56,14 @@
                                     @endif
                                 </div>
 
-                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign In</button>
+                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign Up</button>
                                 <div class="text-center">If you have an account?
-                                    <a class="small" href="{{ route('registration')}}">Sign Up</a></div>
-                                <div class="text-center">Already Admin?
-                                    <a class="small" href="{{ route('registration')}}">Sign Up</a></div>
+                                    <a class="small" href="{{url('login')}}">Sign In</a></div>
                             </form>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>
