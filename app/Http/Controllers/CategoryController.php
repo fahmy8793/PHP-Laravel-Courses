@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\Post as PostResource;
 use App\Models\Category;
+use App\Models\Courses;
 use Illuminate\Http\Request;
 //use App\Http\Resources\Post as PostResource;
 
@@ -24,16 +25,23 @@ class CategoryController extends Controller
 
         return view('dashboard.category.create');
     }
-    public function get()
-{
+    public function get(Request $request)
+//{
     $categories = Category::all();
     $categories = Category::where('status', 1)->get();
-
-
     return PostResource::collection($categories);
 
-    //return Category::all();
+    category::chunk(1000, function ($dataChunk) {
+    dispatch(new SendDataChunk($dataChunk));
+});
+
+    return response()->json(['message' => 'Data sending job dispatched']);
 }
+
+
+
+    //return Category::all();
+
     public function store(Request $request)
     {
         $data = $request->validate([

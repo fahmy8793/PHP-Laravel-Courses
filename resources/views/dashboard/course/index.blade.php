@@ -62,10 +62,11 @@
             @endforeach
             </tbody>
         </table>
-                                    <video width="640" height="360" controls>
-                                        <source src="{{ asset('videos/sample.mp4') }}" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
+        <video width="320" height="240" controls>
+            <source src="{{asset('C:\xampp\htdocs\laravelcourses\storage\app\public\videos')}}" type="video/mp4">
+
+            Your browser does not support the video tag.
+        </video>
 
         {{--        {{ $products->links() }} <!-- Add this line to display pagination links -->--}}
     </div>

@@ -31,7 +31,23 @@ Route::get('/message', function (){
 });
 
 
-Route::get('/courses', [coursesController::class, 'get']);
+//Route::get('/courses', [coursesController::class, 'get']);
+
+Route::get('/courses', function () {
+    $courses = DB::table('courses')->paginate(1000);
+    return response()->json([
+        'name' => $courses->items(),
+        'ended_at' => $courses->items(),
+        'started_at' => $courses->items(),
+        'price' => $courses->items(),
+        'description' => $courses->items(),
+        'links' => [
+            'prev' => $courses->previousPageUrl(),
+            'next' => $courses->nextPageUrl(),
+        ]
+    ]);
+});
+
 
 //Route::post('/data', [coursesController::class, 'get']);
 

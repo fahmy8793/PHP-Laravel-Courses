@@ -16,14 +16,14 @@ class PostSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             courses::create([
                 'name' => $faker->name,
                 'ended_at' => $faker->date(),
                 'started_at' => $faker->date(),
                 'price' => $faker->randomDigit(),
                 'description' => $faker->text(),
-//                'category' => $faker->name
+//                'category' => $faker->category
             ]);
         }
     }
